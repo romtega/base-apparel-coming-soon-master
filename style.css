@@ -1,0 +1,79 @@
+:root {
+  --color-primary: hsl(0, 93%, 68%);
+  --color-secondary: hsl(0, 36%, 70%);
+  --color-gray: hsl(0, 6%, 24%);
+
+  --gradient-1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  --gradient-2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 62.5%;
+  line-height: 1;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.left-hero {
+  margin: 6.8rem 20.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-nav {
+  margin-bottom: auto;
+}
+
+.heading-primary {
+  font-size: 7rem;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+}
+
+.heading-primary span {
+  display: block;
+}
+
+.hero-description {
+  font-size: 1.6rem;
+  margin-bottom: 2.2rem;
+}
+
+.hero-email {
+  display: flex;
+}
+
+.hero-email input {
+  width: 100%;
+  outline: none;
+  border-radius: 100vw;
+  flex: 1;
+}
+
+.btn {
+  border-radius: 100vw;
+  padding: 1.5rem 3rem;
+  transform: translateX(-100%);
+}
