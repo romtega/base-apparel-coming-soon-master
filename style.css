@@ -2,13 +2,16 @@
   --color-primary: hsl(0, 93%, 68%);
   --color-secondary: hsl(0, 36%, 70%);
   --color-gray: hsl(0, 6%, 24%);
-
   --gradient-1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
   --gradient-2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
-
+  --gradient-3: linear-gradient(135deg, hsl(0, 100%, 96%), hsl(0, 80%, 86%));
   --fw-light: 300;
   --fw-regular: 400;
   --fw-bold: 600;
+}
+
+.hidden {
+  display: none;
 }
 
 * {
@@ -24,54 +27,70 @@ html {
 }
 
 body {
-  max-height: 100%;
+  min-height: 100vh;
 }
 
 main {
   display: grid;
-  grid-template-columns: 61% auto;
-  background-color: var(--gradient-1);
+  grid-template-columns: 1fr auto;
+  background: url("./images/bg-pattern-desktop.svg"),
+    linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  background-size: 100% 100%;
 }
 
-.hidden {
-  display: none;
+.nav-hero {
+  grid-row: 1;
+  align-self: center;
+  margin: 0 21rem;
 }
 
 .left-hero {
+  grid-row: 2;
+  align-self: center;
   display: flex;
   flex-direction: column;
-  margin: 6.8rem 21.4rem;
+  margin: auto 21rem;
 }
 
-.hero-nav {
-  margin-bottom: auto;
+.right-hero {
+  grid-area: 1 / 2 / 3 / 3;
+  height: 100vh;
+}
+
+.right-hero img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-img {
+  display: none;
 }
 
 .heading-primary {
   color: var(--color-gray);
   text-transform: uppercase;
-  font-size: 6.4rem;
   line-height: 1.1;
   letter-spacing: 15px;
-  margin-bottom: 1.8rem;
+  font-size: 5.6rem;
+  margin-bottom: 3rem;
 }
 
 .heading-primary span {
   display: block;
-  color: var(--color-secondary);
   font-weight: var(--fw-light);
+  color: var(--color-secondary);
 }
 
 .hero-description {
   color: var(--color-secondary);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: var(--fw-regular);
   line-height: 1.7;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .hero-email {
-  margin-bottom: auto;
+  margin-bottom: 10rem;
 }
 
 .hero-email form {
@@ -82,36 +101,139 @@ main {
   width: 100%;
   outline: none;
   border: 1px solid var(--color-secondary);
-  border-radius: 100vw;
+  border-radius: 50px;
   background: transparent;
-  opacity: 0.4;
   font-family: inherit;
+  font-size: 1.6rem;
+  opacity: 0.4;
   padding: 2.2rem 3rem;
+}
+
+.hero-email input:active,
+.hero-email input:hover {
+  opacity: 1;
+  color: var(--color-gray);
+  box-shadow: inset 0 0 1px var(--color-secondary);
 }
 
 .hero-email input::placeholder {
   color: var(--color-secondary);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
-.btn {
+.btn,
+.btn:visited,
+.btn:link {
   cursor: pointer;
   position: absolute;
-  border-radius: 100vw;
-  transform: translateX(-100%);
+  border-radius: 50px;
+  top: -3%;
+  transform: translateX(-98%);
   border: none;
   background: var(--gradient-2);
-  padding: 1.8rem 4.5rem;
+  padding: 2.1rem 4.8rem;
+  box-shadow: 0 5px 20px 3px hsl(0, 80%, 86%);
 }
 
-.right-hero {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.btn:hover,
+.btn:active {
+  background: var(--gradient-3);
 }
 
-.right-hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.alert {
+  position: absolute;
+  right: 25%;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+.warning {
+  position: absolute;
+  left: 6.5%;
+  bottom: -50%;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  opacity: 0.6;
+  font-weight: var(--fw-bold);
+}
+
+.alert-input {
+  border-radius: 50px;
+  border: 1.5px solid var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-hero {
+    order: 0;
+    align-self: start;
+    background-color: #fff;
+    margin: 4rem 6rem;
+  }
+
+  .left-hero {
+    order: 2;
+    margin: 10rem;
+    text-align: center;
+  }
+
+  .right-hero {
+    order: 1;
+    height: 60vh;
+  }
+
+  .hero-img {
+    display: none;
+  }
+
+  .mobile-img {
+    display: block;
+    width: 100%;
+    object-position: top;
+  }
+
+  .hero-description {
+    margin: 4rem 4rem;
+  }
+
+  .hero-email {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  html {
+    font-size: 35%;
+  }
+
+  main {
+    background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  }
+
+  .right-hero {
+    order: 1;
+    height: 40vh;
+  }
+
+  .heading-primary {
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  .btn,
+  .btn:visited,
+  .btn:link {
+    padding: 1.2rem 3.6rem;
+    transform: translateX(-95%);
+  }
+
+  .alert {
+    right: 20%;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
 }
